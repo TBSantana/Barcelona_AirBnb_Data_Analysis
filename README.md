@@ -13,21 +13,18 @@ This project try to answer diferent questions through data analisys related to A
 
 # Files
 
-AirBnb_Barcelona_2019_Analisys.ipynb : code, analisys and data visualization about AirBnb Barcelona datasets.
+1. AirBnb_Barcelona_2019_Analisys.ipynb : contains code, analisys and data visualization about the following AirBnb Barcelona datasets.
 
 Datasets:
 
-listings.csv : dataset of information about each listing in Barcelona.
-neighbourhoods.csv : dataset of information about districts and neigbourhoods in Barcelona.
-reviews_.csv : dataset of information about data of review per listing.
+2. listings.csv : dataset of information about each listing in Barcelona.
+3. neighbourhoods.csv : dataset of information about districts and neigbourhoods in Barcelona.
+4. reviews_.csv : dataset of information about data of review per listing.
 
 
 # Libraries used
 
 numpy, pandas, seaborn, matplotlib.pyplot, calendar
-
-# Sumary of results
-
 
 
 # Acknowledgements
