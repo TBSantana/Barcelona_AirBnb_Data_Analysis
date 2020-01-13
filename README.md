@@ -11,15 +11,18 @@ This project try to answer diferent questions through data analisys related to A
 3. Which is the occupation of apartments per month in the last two years?
 4. Which are the prices according the type of room and district in the city?
 
+This project is part as the Udadicy Nanodegree program.
+
 # Files
 
-1. AirBnb_Barcelona_2019_Analisys.ipynb : contains code, analisys and data visualization about the following AirBnb Barcelona datasets.
+1. AirBnb_Barcelona_2019_Analisys.ipynb : Jupiter notebook format that contains code, analisys and data visualization about the following AirBnb Barcelona datasets.
+2. AirBnb_Barcelona_2019_Analisys.py : code without markdown in python format.
 
 Datasets:
 
-2. listings.csv : dataset of information about each listing in Barcelona.
-3. neighbourhoods.csv : dataset of information about districts and neigbourhoods in Barcelona.
-4. reviews_.csv : dataset of information about data of review per listing.
+3. listings.csv : dataset of information about each listing in Barcelona.
+4. neighbourhoods.csv : dataset of information about districts and neigbourhoods in Barcelona.
+5. reviews_.csv : dataset of information about data of review per listing.
 
 
 # Libraries used
@@ -32,9 +35,10 @@ numpy, pandas, seaborn, matplotlib.pyplot, calendar
 Some of the diferent resources that help me to explore and analize the data are:
 
 1. AirBnb http://insideairbnb.com/get-the-data.html for the labelled datasets
-2. Universitat Oberta Catalunya for the Jupiter notebooks with python kernels
-3. Kaggle for inspire me with other related datasets https://www.kaggle.com/fermatsavant/airbnb-dataset-of-barcelona-city
-4. Aurélien Géron for the insights i have found in his book "Hand-On Machine Learning with Scikit-Learn, Keras & TensorFlow"
+2. Udacity Nanodegree program 
+3. Universitat Oberta Catalunya for the Jupiter notebooks with python kernels
+4. Kaggle for inspire me with other related datasets https://www.kaggle.com/fermatsavant/airbnb-dataset-of-barcelona-city
+5. Aurélien Géron for the insights i have found in his book "Hand-On Machine Learning with Scikit-Learn, Keras & TensorFlow"
 
 # Future work
 
