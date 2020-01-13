@@ -24,6 +24,11 @@ Datasets:
 4. neighbourhoods.csv : dataset of information about districts and neigbourhoods in Barcelona.
 5. reviews_.csv : dataset of information about data of review per listing.
 
+You can download them by
+
+```
+$ git clone https://github.com/jordilucas16/Barcelona_AirBnb_Data_Analisys.git
+```
 
 # Libraries used
 
