@@ -11,7 +11,7 @@ This project try to answer diferent questions through data analisys related to A
 3. Which is the occupation of apartments per month in the last two years?
 4. Which are the prices according the type of room and district in the city?
 
-This project is part as the Udadicy Nanodegree program.
+This project is part as the Udacity Nanodegree program.
 
 # Files
 
