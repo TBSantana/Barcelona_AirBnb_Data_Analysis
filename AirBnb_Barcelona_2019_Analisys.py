@@ -209,13 +209,6 @@ df.district.value_counts().sort_values(ascending=False)
 
 
 #Visualization of bookings in the Barcelona map (according on latitude and longitude columns)
-#sns.lmplot(x='longitude', y='latitude', data=df, fit_reg=False, hue='district', height=10)
-
-#plt.title('Distribution of AirBnb listings by district in Barcelona', fontsize=18)
-
-#plt.xlim(2.24,2.08)
-#plt.ylim(41.34, 41.48)
-
 plt.figure(figsize=(10,6))
 sns.scatterplot(df.longitude,df.latitude,hue=df.district)
 plt.ioff()
@@ -238,9 +231,9 @@ plt.figure(figsize = (10, 5))
 ax = sns.countplot(x='room_type', data=df)
 plt.title('Number of Room Types', fontsize=18)
 
+#set the axes
 ax.set_xlabel('Type of room', weight='normal', size=15)
 ax.set_ylabel('Number of Rooms', weight='normal', size=15)
-
 ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size =12)
 
 plt.show()
@@ -254,9 +247,12 @@ df.room_type.value_counts()
 #Show number and type of rooms by neighbourhood
 plt.figure(figsize = (15, 6))
 ax = sns.countplot(x='district', hue='room_type', data=df)
+
+#set the axes
 ax.set_xlabel('Districts', weight='normal', size=15)
 ax.set_ylabel('Number of Room types', weight='normal', size=15)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right")
+
 plt.title('Room type by district', fontsize=18)
 
 plt.show()
@@ -268,12 +264,13 @@ plt.show()
 #Show relation beetwen price and district
 plt.figure(figsize = (10, 6))
 ax = sns.barplot(df.district, df.price)
-plt.title('Price according the district', fontsize=18)
 
+#set the axes
 ax.set_xlabel('Districts', weight='normal', size=15)
 ax.set_ylabel('Price in $', weight='normal', size=15)
-
 ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size= 12)
+
+plt.title('Price according the district', fontsize=18)
 
 plt.show()
 
@@ -288,6 +285,8 @@ print(df_price_room_type)
 #Show price per room type
 plt.figure(figsize = (10, 5))
 ax = sns.barplot(df.price, df.room_type)
+
+#set the axes
 ax.set_xlabel('Price', weight='normal', size=15)
 ax.set_ylabel('Room type', weight='normal', size=15)
 plt.title('Price according the room type', fontsize=18)
@@ -319,9 +318,12 @@ print(df_price_room_type)
 #Show minimum nights stand in days according the room type
 plt.figure(figsize = (10, 5))
 ax = sns.barplot(df.room_type, df.minimum_nights, ci = None)
+
+#set the axes
 ax.set_xlabel('Room type', weight='normal', size=15)
 ax.set_ylabel('Minimum nights', weight='normal', size=15)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size = 12)
+
 plt.title('Minimum nights according the room type', fontsize=18)
 
 plt.show()
@@ -348,6 +350,7 @@ plt.figure(figsize = (10, 6))
 ax = sns.barplot(df.district, df.availability_365)
 plt.title('Availability according the district', fontsize=16)
 
+#set the axes
 ax.set_xlabel('District', weight='normal', size=1)
 ax.set_ylabel('Days Available', weight='normal', size=15)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size = 12)
@@ -366,6 +369,7 @@ print(df_price_room_type)
 plt.figure(figsize = (10, 5))
 ax = sns.barplot(df.availability_365, df.room_type, ci = None)
 
+#set the axes
 ax.set_xlabel('Days Available', weight='normal', size=12)
 ax.set_ylabel('Romm type', weight='normal', size=12)
 plt.title('Availability according the room type', fontsize=18)
