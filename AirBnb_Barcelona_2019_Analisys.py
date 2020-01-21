@@ -30,7 +30,7 @@
 #     
 #     
 
-# In[2]:
+# In[25]:
 
 
 #Import libraries, read and show head datasets.
@@ -52,13 +52,13 @@ df_neighbourhood = pd.read_csv('neighbourhoods.csv')
 df = pd.read_csv('listings.csv', parse_dates=['last_review'])
 
 
-# In[7]:
+# In[26]:
 
 
 df_reviews.head()
 
 
-# In[8]:
+# In[27]:
 
 
 df_reviews.shape
@@ -67,20 +67,20 @@ df_reviews.shape
 # <a id='Exploratory-Data-Analysis'></a>
 # ## Exploratory Data Analysis
 
-# In[9]:
+# In[28]:
 
 
 df_neighbourhood.head()
 
 
-# In[10]:
+# In[29]:
 
 
 #Dimension of neighbourhoods dataset in number of rows and columns
 df_neighbourhood.shape
 
 
-# In[11]:
+# In[30]:
 
 
 #General info about neighbourhood dataset (number of rows not null and type) about each column
@@ -89,27 +89,27 @@ df_neighbourhood.info()
 
 # Now we go to explore listings dataset, where we get the most interest information for the analisys.
 
-# In[12]:
+# In[31]:
 
 
 df.head()
 
 
-# In[13]:
+# In[32]:
 
 
 #Dimension of listing dataset in number of rows and columns
 df.shape
 
 
-# In[14]:
+# In[33]:
 
 
 #Statistical information about numerical variables
 df.describe()
 
 
-# In[15]:
+# In[34]:
 
 
 #Histogram for each numerical attribute
@@ -117,7 +117,7 @@ df.hist(bins=50, figsize=(20,15))
 plt.show()
 
 
-# In[4]:
+# In[35]:
 
 
 #Map of correlation beetwen variables
@@ -126,14 +126,14 @@ f, ax = plt.subplots(figsize=(12, 10))
 sns.heatmap(corrmat, ax=ax, cmap="YlGnBu", linewidths=0.1)
 
 
-# In[17]:
+# In[36]:
 
 
 #General info about listings dataset (number of rows not null and type) about each column
 df.info()
 
 
-# In[18]:
+# In[37]:
 
 
 #Finding out the earliest and latest review date
@@ -146,7 +146,7 @@ print(newest_date)
 
 # ## Data Preparation
 
-# In[8]:
+# In[38]:
 
 
 #Data wrangling
@@ -165,7 +165,7 @@ print(no_nulls)
 
 # We can see columns like name, last_review and rewiews_per_month, have missing values since they have less than 20428 rows informed as non-null in the above info() form. Only rewiews_per_month is an useful column for our analysis in the future (if we need to build a linear regression model for example), then the best option is fill this nulls with the column mean.
 
-# In[20]:
+# In[39]:
 
 
 #Function that calculates mean and fill the missing values of the column passed by parameter.
@@ -173,7 +173,7 @@ fill_mean = lambda col: col.fillna(col.mean())
 df['reviews_per_month'] =fill_mean(df.reviews_per_month)
 
 
-# In[21]:
+# In[40]:
 
 
 df.head()
@@ -184,7 +184,7 @@ df.head()
 
 # Let's go to take a look about categorical variables of interest in our analysis.
 
-# In[22]:
+# In[41]:
 
 
 #Show number of listings by district
@@ -205,7 +205,7 @@ df.district.value_counts().sort_values(ascending=False)
 # 
 # In Barcelona city exists 10 districts all of them have diferent neigbourhoods, AirBnb listings are distributed around these and each one belong to one neibourhood and district (in dataset called neigbourhood_group).
 
-# In[9]:
+# In[42]:
 
 
 #Visualization of bookings in the Barcelona map (according on latitude and longitude columns)
@@ -214,7 +214,7 @@ sns.scatterplot(df.longitude,df.latitude,hue=df.district)
 plt.ioff()
 
 
-# In[24]:
+# In[43]:
 
 
 #All Neighbourhoods per district
@@ -223,7 +223,7 @@ pd.DataFrame(df_neighbourhood.groupby(["district", "neighbourhood"]).count())
 
 # ### Data related to Room type
 
-# In[25]:
+# In[44]:
 
 
 #Show the number of room types 
@@ -241,7 +241,7 @@ plt.show()
 df.room_type.value_counts()
 
 
-# In[26]:
+# In[45]:
 
 
 #Show number and type of rooms by neighbourhood
@@ -258,24 +258,46 @@ plt.title('Room type by district', fontsize=18)
 plt.show()
 
 
-# In[27]:
+# In[46]:
+
+
+# Barplot function
+def show_barplot(col_x, col_y, x_label, y_label, tittle_):
+    '''
+    INPUT 
+        col_x - x column to barplot
+        col_y - y column to barplot
+        x_label - x label barplot text
+        y_label - y label barplot text
+        tittle_ - barplot tittle
+        
+    OUTPUT
+        Displays a barplot of pretty things related to the col_x and col_y.
+    '''
+    
+    #Standard sizes
+    plt.figure(figsize = (10, 6))
+    #Draw plot
+    ax = sns.barplot(col_x, col_y)
+    #Set the axes
+    ax.set_xlabel(x_label, weight='normal', size=15)
+    ax.set_ylabel(y_label, weight='normal', size=15)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size= 12)
+    #Set tittle
+    plt.title(tittle_, fontsize=18)
+    #Show plot
+    plt.show()
+    
+
+
+# In[47]:
 
 
 #Show relation beetwen price and district
-plt.figure(figsize = (10, 6))
-ax = sns.barplot(df.district, df.price)
-
-#set the axes
-ax.set_xlabel('Districts', weight='normal', size=15)
-ax.set_ylabel('Price in $', weight='normal', size=15)
-ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size= 12)
-
-plt.title('Price according the district', fontsize=18)
-
-plt.show()
+show_barplot(df.district, df.price, 'Districts', 'Price in $', 'Price according the district')
 
 
-# In[28]:
+# In[48]:
 
 
 #Relation beetwen price and type room
@@ -283,32 +305,24 @@ df_price_room_type = df.groupby(['room_type']).mean()['price'].sort_values()
 print(df_price_room_type)
 
 #Show price per room type
-plt.figure(figsize = (10, 5))
-ax = sns.barplot(df.price, df.room_type)
-
-#set the axes
-ax.set_xlabel('Price', weight='normal', size=15)
-ax.set_ylabel('Room type', weight='normal', size=15)
-plt.title('Price according the room type', fontsize=18)
-
-plt.show()
+show_barplot(df.price, df.room_type, 'Price', 'Room type', 'Price according the room type')
 
 
-# In[29]:
+# In[49]:
 
 
 #Highest median prices according the district and the room type
 pd.DataFrame(df.groupby(['district','room_type']).mean()['price'].sort_values(ascending=False)).head(15)
 
 
-# In[30]:
+# In[50]:
 
 
 #Lowest median prices according the district and the room type
 pd.DataFrame(df.groupby(['district','room_type']).mean()['price'].sort_values()).head(15)
 
 
-# In[31]:
+# In[51]:
 
 
 #Relation beetwen minimum_nights in days and type room
@@ -332,7 +346,7 @@ plt.show()
 # <a id='Data-Availability-Rooms'></a>
 # ### Data related to availabily of rooms in 2019
 
-# In[32]:
+# In[52]:
 
 
 #Relation beetwen district and availability in days per year
@@ -342,23 +356,14 @@ df_price_room_type.availability_365 = df_price_room_type.availability_365.round(
 df_price_room_type
 
 
-# In[33]:
+# In[53]:
 
 
 #Show availability in days according district
-plt.figure(figsize = (10, 6))
-ax = sns.barplot(df.district, df.availability_365)
-plt.title('Availability according the district', fontsize=16)
-
-#set the axes
-ax.set_xlabel('District', weight='normal', size=1)
-ax.set_ylabel('Days Available', weight='normal', size=15)
-ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", size = 12)
-
-plt.show()
+show_barplot(df.district, df.availability_365, 'District', 'Days Available', 'Availability according the district')
 
 
-# In[34]:
+# In[54]:
 
 
 #Relation beetwen minimum_nights stand and type room
@@ -377,28 +382,28 @@ plt.title('Availability according the room type', fontsize=18)
 plt.show()
 
 
-# In[35]:
+# In[55]:
 
 
 #Lowest median availability per year in days according the neigbourhood and district
 pd.DataFrame(df.groupby(['neighbourhood','district']).mean()['availability_365'].sort_values()).head(15)
 
 
-# In[36]:
+# In[56]:
 
 
 #Highest median availability per year in days according the neigbourhood and district
 pd.DataFrame(df.groupby(['neighbourhood','district']).mean()['availability_365'].sort_values(ascending=False)).head(15)
 
 
-# In[37]:
+# In[57]:
 
 
 #Highest median availability per year in days according the district and room type
 pd.DataFrame(df.groupby(['district','room_type']).mean()['availability_365'].sort_values(ascending=False)).head(15)
 
 
-# In[38]:
+# In[58]:
 
 
 #Lowest median availability per year in days according the district and room type
@@ -410,7 +415,7 @@ pd.DataFrame(df.groupby(['district','room_type']).mean()['availability_365'].sor
 # 
 # According to AirBnb data information in your website http://insideairbnb.com/barcelona: "Airbnb guests may leave a review after their stay, and these can be used as an indicator of airbnb activity." 
 
-# In[39]:
+# In[59]:
 
 
 # make new dataframe for number of reviews
@@ -428,7 +433,7 @@ rev_2019_months['%'] = (rev_2019_months['Number of reviews']*100)/rev_2019_month
 rev_2019_months
 
 
-# In[40]:
+# In[60]:
 
 
 # Select 2018 year
@@ -441,7 +446,7 @@ rev_2018_months['%'] = (rev_2018_months['Number of reviews']*100)/rev_2018_month
 rev_2018_months
 
 
-# In[41]:
+# In[61]:
 
 
 #Show Reviews per mont in 2019
@@ -458,7 +463,7 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=40, ha="right", fontsize=13)
 plt.show()
 
 
-# In[42]:
+# In[62]:
 
 
 #Show Reviews per mont in 2019
@@ -478,14 +483,14 @@ plt.show()
 # <a id='Data-Booking-Prices'></a>
 # ## Data related to 2019 booking prices
 
-# In[43]:
+# In[63]:
 
 
 #Highest median prices in dollars according the neigbourhood and district
 pd.DataFrame(df.groupby(['neighbourhood','district']).mean()['price'].sort_values(ascending=False)).head(15)
 
 
-# In[44]:
+# In[64]:
 
 
 #Lowest median prices according the neigbourhood and district
@@ -495,7 +500,7 @@ pd.DataFrame(df.groupby(['neighbourhood','district']).mean()['price'].sort_value
 # <a id='Comparison-Prices'></a>
 # ## Price comparison about three of the most populars districts in Barcelona city: Eixample, Ciutat Vella and Les Corts
 
-# In[45]:
+# In[65]:
 
 
 #Function that calculates the price median of each room type in the district and shows the plot visualization
@@ -533,14 +538,14 @@ def calculate_price_mean_and_plot(filtered_df, plot=True):
 
 # ### Les Corts district:
 
-# In[46]:
+# In[66]:
 
 
 #Call to calculate_price_mean_and_plot function with Les Corts district data 
 calculate_price_mean_and_plot(df[df.district == 'Les Corts'])
 
 
-# In[47]:
+# In[67]:
 
 
 #Median price booking table of each neigbourhood of Les Corts district per room type
@@ -549,14 +554,14 @@ pd.DataFrame(df.query("district == 'Les Corts'").groupby(['district','neighbourh
 
 # ### Eixample district:
 
-# In[48]:
+# In[68]:
 
 
 #Call to calculate_price_mean_and_plot function with Eixample district data 
 calculate_price_mean_and_plot(df[df.district == 'Eixample'])
 
 
-# In[49]:
+# In[69]:
 
 
 #Median price booking table of each neigbourhood of Eixample district per room type
@@ -565,14 +570,14 @@ pd.DataFrame(df.query("district == 'Eixample'").groupby(['district','neighbourho
 
 # ### Ciutat Vella district:
 
-# In[50]:
+# In[70]:
 
 
 #Call to calculate_price_mean_and_plot function with Ciutat Vella district data
 calculate_price_mean_and_plot(df[df.district == 'Ciutat Vella'])
 
 
-# In[51]:
+# In[71]:
 
 
 #Median price booking table of each neigbourhood of Ciutat Vella district per room type
