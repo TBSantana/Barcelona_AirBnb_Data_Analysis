@@ -1,13 +1,13 @@
-# Barcelona AirBnb Data Analisys
+# Barcelona AirBnb Data Analysis
 
-Analisys of AirBnb listings in Barcelona city.
+Analysis of AirBnb listings in Barcelona city.
 
 # Motivation
 
-This project try to answer diferent questions through data analisys related to AirBnb bussines in Barcelona city:
+This project try to answer diferent questions through data analysis related to AirBnb bussines in Barcelona city:
 
 1. Which neighbourhood are in the city and which are your features?
-2. Which is the median availability in days per year of each apartment according the district and type of room?
+2. Which is the average availability in days per year of each apartment according the district and type of room?
 3. Which is the occupation of apartments per month in the last two years?
 4. Which are the prices according the type of room and district in the city?
 
@@ -15,8 +15,8 @@ This project is part as the Data Science Udacity Nanodegree program.
 
 # Files
 
-1. AirBnb_Barcelona_2019_Analisys.ipynb : Jupiter notebook format that contains code, analisys and data visualization about the following AirBnb Barcelona datasets.
-2. AirBnb_Barcelona_2019_Analisys.py : code without markdown in python format.
+1. AirBnb_Barcelona_2019_Analysis.ipynb : Jupiter notebook format that contains code, analisys and data visualization about the following AirBnb Barcelona datasets.
+2. AirBnb_Barcelona_2019_Analysis.py : code without markdown in python format.
 
 Datasets:
 
