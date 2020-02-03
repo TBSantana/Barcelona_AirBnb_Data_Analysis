@@ -1,4 +1,4 @@
-# Barcelona_AirBnb_Data_Analisys
+# Barcelona AirBnb Data Analisys
 
 Analisys of AirBnb listings in Barcelona city.
 
@@ -11,7 +11,7 @@ This project try to answer diferent questions through data analisys related to A
 3. Which is the occupation of apartments per month in the last two years?
 4. Which are the prices according the type of room and district in the city?
 
-This project is part as the Udacity Nanodegree program.
+This project is part as the Data Science Udacity Nanodegree program.
 
 # Files
 
@@ -48,3 +48,7 @@ Some of the diferent resources that help me to explore and analize the data are:
 # Future work
 
 Comparison between prices in different seasons and build a Linear Regression model to predict listing prices.
+
+# Blog post
+
+Also i recommend you read my [Medium post](https://medium.com/@jordiluc16/3-things-you-need-to-know-before-booking-an-airbnb-apartment-in-barcelona-3ae9d0cb9110) about this analysis.
