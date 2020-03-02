@@ -40,7 +40,7 @@ numpy, pandas, seaborn, matplotlib.pyplot, calendar
 Some of the diferent resources that help me to explore and analize the data are:
 
 1. AirBnb http://insideairbnb.com/get-the-data.html for the labelled datasets
-2. Udacity Nanodegree program 
+2. Udacity Data Scientist Nanodegree program 
 3. Universitat Oberta Catalunya for the Jupiter notebooks with python kernels
 4. Kaggle for inspire me with other related datasets https://www.kaggle.com/fermatsavant/airbnb-dataset-of-barcelona-city
 5. Aurélien Géron for the insights i have found in his book "Hand-On Machine Learning with Scikit-Learn, Keras & TensorFlow"
